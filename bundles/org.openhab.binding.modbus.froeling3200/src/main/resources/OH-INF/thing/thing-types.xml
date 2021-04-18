@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="modbus"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+
+	<thing-type id="lambdatronicP3200">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="serial"/>
+			<bridge-type-ref id="tcp"/>
+		</supported-bridge-type-refs>
+
+		<label>Fröling Lambdatronic 3200</label>
+		<description>Boiler Control, used in a wide range of Fröling wood-, wood chips or pellet boilers.</description>
+
+		<channels>
+			<channel id="boiler_temperature" typeId="boiler_temperature"/>
+			<channel id="exhaust_gas_temperature" typeId="exhaust_gas_temperature"/>
+			<channel id="board_temperature" typeId="board_temperature"/>
+			<channel id="residual_oxygen_content" typeId="residual_oxygen_content"/>
+		</channels>
+
+		<config-description-ref uri="thing-type:modbus-froeling:3200"/>
+	</thing-type>
+
+	<channel-type id="boiler_temperature">
+		<item-type>Number:Temperature</item-type>
+		<label>Boiler Temperature</label>
+		<state pattern="%f %unit%" readOnly="true"/>
+	</channel-type>
+
+	<channel-type id="exhaust_gas_temperature">
+		<item-type>Number:Temperature</item-type>
+		<label>Exhaust Gas Temperature</label>
+		<state pattern="%d %unit%" readOnly="true"/>
+	</channel-type>
+
+	<channel-type id="board_temperature">
+		<item-type>Number:Temperature</item-type>
+		<label>Board Temperature</label>
+		<state pattern="%d %unit%" readOnly="true"/>
+	</channel-type>
+
+	<channel-type id="residual_oxygen_content">
+		<item-type>Number:Percent</item-type>
+		<label>Residual Oxygen Content</label>
+		<state pattern="%d %unit%" readOnly="true"/>
+	</channel-type>
+</thing:thing-descriptions>
